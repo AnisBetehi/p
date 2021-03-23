@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500&family=Roboto&display=swap');
+
+/* Main Variables */
+
+:root {
+    --MainBgColor: #303a52;
+    --SecondaryBgColor: #071e3d;
+    --BtnColor: #ff1f5a;
+
+}
+
+/* General Styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+body, a, input {
+    font-family: lato, sans-serif;
+}
+
+
+/* PreLoader/Guide Styling */
+
+.loader {
+    z-index: 100;
+}
+
+#preLoader {
+    width: 80px;
+}
+
+.loader, .guide {
+    height: 100%;
+    width: 100%;
+    background-color: var(--MainBgColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    transition: 0.5s ease;
+    opacity: 1;
+    text-align: center;
+}
+
+.guide {
+    flex-direction: column;
+    background-color: var(--SecondaryBgColor);
+    z-index: 99;
+}
+
+
+.guide .guideTitle {
+    color: rgb(238, 235, 235);
+    font-size: 25px;
+    padding: 0 30px;
+    font-weight: 450;
+    line-height: 30px;
+    transform: translatex(-150%);
+    animation: slideRight 1.5s forwards;
+}
+
+.guide .keys {
+    width: 200px;
+    margin: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transform: translateX(100vw);
+    animation: slideLeft 1.5s ease 0.2s forwards;
+}
+
+.guide .keys .fas {
+    font-size: 30px;
+    color: white;
+    border: 2px solid var(--BtnColor);
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.guide #gotIt {
+    border: 2px solid var(--BtnColor);
+    background-color: transparent;
+    color: white;
+    outline: none;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    opacity: 0;
+    pointer-events: none;
+    animation: appear 1.5s ease 0.7s forwards;
+}
+
+.guide #gotIt:hover {
+    background-color: var(--BtnColor);
+}
+
+.guide .keys #keyUp, .guide .keys #keyDown {
+    transition: 0.5s ease;
+    
+}
+
+.pressedDown {
+    background-color: var(--BtnColor);
+    transform: translateY(15px);
+
+}
+
+.pressedUp {
+    background-color: var(--BtnColor);
+    transform: translateY(-15px);
+
+}
+
+
+/* Utility Classes */ 
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* Animations */
+
+@keyframes slideRight {
+    from {transform: translateX(-150%);}
+    to {transform: translateX(0px);}
+}
+
+@keyframes slideLeft {
+    from {transform: translateX(100vw);}
+    to {transform: translateX(0px);}
+}
+
+
+@keyframes appear {
+    from {opacity: 0;
+    pointer-events: none;}
+    to {
+        opacity: 1;
+    pointer-events: all;
+    }
+}
+
+
+
+/* Meida Queries */
+
+@media (max-width: 600px) {
+    .guideTitle {
+        font-size: 16px;
+    }
+
+    #keyUp, #keyDown, #gotIt {
+        transform: scale(0.9);
+    }
+}
